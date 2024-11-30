@@ -1,5 +1,5 @@
-import { Box, Button, Flex, HStack } from "@chakra-ui/react";
-import { Outlet } from "react-router-dom";
+import { Box, Button, HStack } from "@chakra-ui/react";
+import { Outlet, Link } from "react-router-dom";
 import { FaAirbnb } from "react-icons/fa6";
 
 export default function Root() {
@@ -12,12 +12,14 @@ export default function Root() {
         borderBottomWidth={1}
       >
         <Box color={"red.500"}>
-          <FaAirbnb size={"48"} />
+          <Link to={"/"}>
+            <FaAirbnb size={"48"} />
+          </Link>
         </Box>
-        <Flex gap={2}>
+        <HStack spacing={2}>
           <Button>Log in</Button>
-          <Button colorPalette={"red"}>Sign up</Button>
-        </Flex>
+          <Button colorScheme={"red"}>Sign up</Button>
+        </HStack>
       </HStack>
       <Outlet />
     </Box>
