@@ -36,9 +36,16 @@ export default function Room() {
           <Text as={"b"} fontSize={"sm"} noOfLines={1}>
             Shinano, Kamiminochi District, 일본의 초소형 주택
           </Text>
-          <HStack spacing={1}>
-            <FaStar size={15} />
-            <Text>5.0</Text>
+          <HStack
+            _hover={{
+              color: "red.100",
+            }}
+            spacing={1}
+            alignItems={"center"}
+            color={"gray"}
+          >
+            <FaStar size={12} />
+            <Text fontSize={"sm"}>5.0</Text>
           </HStack>
         </Grid>
 
