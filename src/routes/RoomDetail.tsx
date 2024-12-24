@@ -25,7 +25,7 @@ export default function RoomDetail() {
   >([`rooms`, roomPk, `reviews`], getRoomReviews);
   return (
     <Box mt={10} px={{ base: 10, lg: 40 }}>
-      <Skeleton height={"43px"} width={"25%"} isLoaded={!isLoading}>
+      <Skeleton height={"43px"} width={"40%"} isLoaded={!isLoading}>
         <Heading>{data?.name}</Heading>
       </Skeleton>
       <Grid
