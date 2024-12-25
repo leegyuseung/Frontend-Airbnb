@@ -68,7 +68,7 @@ export default function Header() {
               </Button>
             </>
           ) : (
-            <Avatar size={"md"} />
+            <Avatar name={user?.name} src={user?.avatar} size={"md"} />
           )
         ) : null}
       </HStack>
