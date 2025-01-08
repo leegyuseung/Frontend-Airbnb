@@ -10,6 +10,7 @@ import {
   ModalContent,
   ModalHeader,
   ModalOverlay,
+  Text,
   useToast,
   VStack,
 } from "@chakra-ui/react";
@@ -38,6 +39,7 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm<IForm>();
   const toast = useToast();
   const qeuryClient = useQueryClient();
@@ -46,15 +48,13 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
     IUsernameLoginError,
     IUsernameLoginVariables
   >(usernameLogin, {
-    onMutate: () => {
-      console.log("mutation starting");
-    },
     onSuccess: (data) => {
       toast({
         title: "welcome back!",
         status: "success",
       });
       onClose();
+      reset();
       qeuryClient.refetchQueries(["me"]);
     },
     onError: (error) => {
@@ -96,6 +96,11 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
               />
             </InputGroup>
           </VStack>
+          {mutation.isError ? (
+            <Text color={"red.500"} textAlign={"center"} fontSize={"sm"}>
+              Username or Password are wrong
+            </Text>
+          ) : null}
           <Button
             isLoading={mutation.isLoading}
             type="submit"
