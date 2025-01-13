@@ -88,3 +88,9 @@ export const usernameLogin = ({
       }
     )
     .then((response) => response.data);
+
+export const getAmenities = () =>
+  instance.get(`rooms/amenities`).then((response) => response.data);
+
+export const getCategories = () =>
+  instance.get(`categories`).then((response) => response.data);
