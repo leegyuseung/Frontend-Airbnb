@@ -37,7 +37,7 @@ export const logOut = () =>
 export const githubLogIn = (code: string) =>
   instance
     .post(
-      `/users/github`,
+      `users/github`,
       { code },
       {
         headers: {
@@ -50,7 +50,7 @@ export const githubLogIn = (code: string) =>
 export const kakaoLogIn = (code: string) =>
   instance
     .post(
-      `/users/kakao`,
+      `users/kakao`,
       { code },
       {
         headers: {
@@ -79,7 +79,7 @@ export const usernameLogin = ({
 }: IUsernameLoginVariables) =>
   instance
     .post(
-      `/users/log-in`,
+      `users/log-in`,
       { username, password },
       {
         headers: {

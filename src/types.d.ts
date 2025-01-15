@@ -31,6 +31,7 @@ export interface ICategory {
 }
 
 export interface IRoomDetail extends IRoomList {
+  id: number;
   created_at: string;
   updated_at: string;
   rooms: number;
