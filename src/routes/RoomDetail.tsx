@@ -16,7 +16,7 @@ import {
   VStack,
 } from "@chakra-ui/react";
 import { FaStar } from "react-icons/fa6";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import type { Value } from "react-calendar/dist/cjs/shared/types";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
@@ -27,7 +27,16 @@ export default function RoomDetail() {
   const { data: reviewsData, isLoading: isReviewsLoading } = useQuery<
     IReview[]
   >([`rooms`, roomPk, `reviews`], getRoomReviews);
-  const [dates, setDates] = useState<Value>();
+  const [dates, setDates] = useState<Value>(null);
+  useEffect(() => {
+    if (dates && Array.isArray(dates)) {
+      const [firstDate, secondDate] = dates;
+      if (firstDate && secondDate) {
+        const [checkIn] = firstDate.toJSON().split("T");
+        const [checkOut] = secondDate.toJSON().split("T");
+      }
+    }
+  }, [dates]);
   return (
     <Box mt={10} px={{ base: 10, lg: 40 }}>
       <Skeleton height={"43px"} width={"40%"} isLoaded={!isLoading}>
