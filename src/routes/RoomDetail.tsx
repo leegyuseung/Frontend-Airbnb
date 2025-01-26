@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
 import { checkBooking, getRoom, getRoomReviews } from "../api";
 import { IReview, IRoomDetail } from "../types";
+import { Helmet } from "react-helmet";
 import {
   Avatar,
   Box,
@@ -41,6 +42,9 @@ export default function RoomDetail() {
 
   return (
     <Box mt={10} px={{ base: 10, lg: 40 }}>
+      <Helmet>
+        <title>{data ? data.name : "Loading..."}</title>
+      </Helmet>
       <Skeleton height={"43px"} width={"40%"} isLoaded={!isLoading}>
         <Heading>{data?.name}</Heading>
       </Skeleton>
