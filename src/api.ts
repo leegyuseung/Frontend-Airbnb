@@ -5,7 +5,10 @@ import { Value } from "react-calendar/dist/cjs/shared/types";
 import { formatDate } from "./lib/utils";
 
 const instance = axios.create({
-  baseURL: "http://127.0.0.1:8000/api/v1/",
+  baseURL:
+    process.env.NODE_ENV === "development"
+      ? "http://127.0.0.1:8000/api/v1/"
+      : "https://airbnbclone-elun.onrender.com",
   withCredentials: true, // api에 요청을 할 때 cookie를 보내겠다는 의미
 });
 
